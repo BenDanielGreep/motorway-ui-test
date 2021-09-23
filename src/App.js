@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
+import Modal from 'react-bootstrap/Modal';
+import MyVerticallyCenteredModal from './components/Modal';
 
 
 const App = () => {
   const [images, setImages] = useState();
+  const [modalShow, setModalShow] = React.useState(false);
+  const [modalImage, setModalImage] = useState('');
+
 
   useEffect(() => {
     fetch('images?limit=10')
@@ -29,20 +34,24 @@ const App = () => {
       {
         images && images.map(img => (
               <Card key={img.id} border="light">
-                <Card.Img variant="top" src={`${img.url}.jpg`} />
+                <Card.Img variant="top" src={`${img.url}.jpg`} onClick={() => (setModalShow(true), setModalImage(img))} />
                 <Card.Body>
                   <Card.Text>
                     by {img.user.name} <br />
                     Location: {img.user.location || "Not Available"}
                   </Card.Text>
-                  <Image className="avatar" src={`${img.user.profile_image}.webp`} rounded />
+                  <Image className="avatar" src={`${img.user.profile_image}.webp`} />
                 </Card.Body>
               </Card>
           ))
         }
 
           </Row>
-
+        <MyVerticallyCenteredModal
+          img={modalImage}
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
     </Container>
     
   );

@@ -34,7 +34,7 @@ const App = () => {
       {
         images && images.map(img => (
               <Card key={img.id} border="light">
-                <Card.Img variant="top" src={`${img.url}.jpg`} prop='img' onClick={() => (setModalShow(true), setModalImage(img))} />
+                <Card.Img variant="top" src={`${img.url}.jpg`} onClick={() => (setModalShow(true), setModalImage(img))} />
                 <Card.Body>
                   <Card.Text>
                     by {img.user.name} <br />

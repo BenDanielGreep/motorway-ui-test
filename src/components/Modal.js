@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
 
-function MyVerticallyCenteredModal(props, img) {
+function MyVerticallyCenteredModal(props) {
   return (
     console.log(props),
     <Modal
@@ -14,11 +14,11 @@ function MyVerticallyCenteredModal(props, img) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Full Screen Image
+
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* {`${img.img.url}.jpg`}? : no image */}
+        <img className="img-fluid" src={`${props.img.url}.jpg`} alt="" />
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>

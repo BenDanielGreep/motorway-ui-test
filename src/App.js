@@ -5,7 +5,6 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
-import Modal from 'react-bootstrap/Modal';
 import MyVerticallyCenteredModal from './components/Modal';
 
 
@@ -16,7 +15,7 @@ const App = () => {
 
 
   useEffect(() => {
-    fetch('images?limit=10')
+    fetch('images?limit=20')
       .then(res => res.json())
       .then(data => {
         console.log('Success:', data);
